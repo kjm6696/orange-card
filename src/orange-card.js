@@ -1,52 +1,118 @@
 import { LitElement, html, css } from 'lit';
 
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
-
 class OrangeCard extends LitElement {
   static properties = {
     header: { type: String },
   };
 
   static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
+    body {
+      background: white;
+    }
+
+    .topLeftbtn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .oneBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .twoBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .threBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+      box-shadow: 0px 6px 15px black;
+      border-radius: 30px;
+      padding: 2px;
+    }
+
+    .img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0px 6px 15px black;
+    }
+
+    @media only screen and (max-width: 400px) {
+      button {
+        display: none;
+      }
+      .topLeftbtn {
+        display: none;
+      }
+      .oneBut {
+        display: none;
+      }
+      .twoBut {
+        display: none;
+      }
+      .threBut {
+        display: none;
+      }
+    }
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      font-family: Monospace;
+      box-shadow: 0px 6px 15px black;
       text-align: center;
-      background-color: var(--orange-card-background-color);
     }
 
-    main {
-      flex-grow: 1;
-    }
-
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
-    }
-
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
+    @media only screen and (max-width: 500px) {
+      .page {
+        background: orange;
+        text-align: center;
+        box-shadow: 0px 6px 15px black;
+        padding: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
+    @media only screen and (min-width: 500px) {
+      .page {
+        background: orange;
+        text-align: center;
+        box-shadow: 0px 6px 15px black;
+        width: 500px;
+        padding: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
-    .app-footer a {
-      margin-left: 5px;
+    .paragraph {
+      text-align: center;
+      font-family: Monospace;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .header {
+      font-family: Monospace;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
     }
   `;
 
@@ -58,29 +124,28 @@ class OrangeCard extends LitElement {
   render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
-
-        <p>Edit <code>src/OrangeCard.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <button class="topLeftbtn">
+          Duplicate
+          <button class="oneBut">
+            Change Background
+            <button class="twoBut">
+              Change Heading
+              <button class="threBut">Delete Last Instance</button>
+            </button>
+          </button>
+        </button>
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+      <div class="page">
+        <div class="header"><h1>Heading for the title</h1></div>
+        <img
+          src="https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png"
+          style="width:80%;"
+          class="img"
+          alt="https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png"
+        />
+        <div class="paragraph"></div>
+        <button class="btn">Details</button>
+      </div>
     `;
   }
 }
