@@ -1,8 +1,16 @@
 import { LitElement, html, css } from 'lit';
+import '@lrnwebcomponents/meme-maker/src/meme-maker.js';
 
 class OrangeCard extends LitElement {
   static properties = {
     header: { type: String },
+    title: { type: String },
+    Image: { type: String },
+    topLeftBut: { type: String },
+    oneBut: { type: String },
+    twoBut: { type: String },
+    threBut: { type: String },
+    btn: { type: String },
   };
 
   static styles = css`
@@ -118,33 +126,45 @@ class OrangeCard extends LitElement {
 
   constructor() {
     super();
+    this.title = "test";
+    this.Image = "https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png";
     this.header = 'My app';
+    this.topLeftBut = "Duplicate";
+    this.oneBut = "Change Background";
+    this.twoBut = "Change Heading";
+    this.threBut = "Delete Last Instance";
+    this.btn = "Details";
   }
 
   render() {
     return html`
       <main>
         <button class="topLeftbtn">
-          Duplicate
+          ${this.topLeftBut}
           <button class="oneBut">
-            Change Background
+            ${this.oneBut}
             <button class="twoBut">
-              Change Heading
-              <button class="threBut">Delete Last Instance</button>
+              ${this.twoBut}
+              <button class="threBut">
+              ${this.threBut}
+              </button>
             </button>
           </button>
         </button>
       </main>
       <div class="page">
-        <div class="header"><h1>Heading for the title</h1></div>
-        <img
-          src="https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png"
-          style="width:80%;"
-          class="img"
-          alt="https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png"
-        />
+        <div class="header"><h1>${this.title}</h1></div>
+        <meme-maker 
+          alt="Cat stalking a small toy" 
+          image-url="${this.Image}" 
+          top-text="This is not" 
+          bottom-text="transparent">
+        </meme-maker>
+        <slot></slot>
         <div class="paragraph"></div>
-        <button class="btn">Details</button>
+        <button class="btn">
+        ${this.btn}
+        </button>
       </div>
     `;
   }
