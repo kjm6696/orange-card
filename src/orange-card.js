@@ -4,39 +4,18 @@ import '@lrnwebcomponents/meme-maker/src/meme-maker.js';
 class OrangeCard extends LitElement {
   static properties = {
     header: { type: String },
-    title: { type: String },
     Image: { type: String },
     topLeftBut: { type: String },
     oneBut: { type: String },
     twoBut: { type: String },
     threBut: { type: String },
     btn: { type: String },
+    carrot: { type: String },
   };
 
   static styles = css`
     body {
       background: white;
-    }
-
-    .topLeftbtn {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .oneBut {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .twoBut {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .threBut {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .img {
@@ -109,62 +88,52 @@ class OrangeCard extends LitElement {
       }
     }
 
-    .paragraph {
-      text-align: center;
-      font-family: Monospace;
-      color: white;
-      text-shadow: 2px 2px 4px #000000;
-    }
-
     .header {
       font-family: Monospace;
       text-transform: uppercase;
       color: white;
       text-shadow: 2px 2px 4px #000000;
     }
+
+    .details {
+      font-family: Monospace;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      font-size: 20px;
+    }
   `;
 
   constructor() {
     super();
-    this.title = "test";
-    this.Image = "https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png";
+    this.title = 'Heading for the title';
+    this.Image =
+      'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png';
     this.header = 'My app';
-    this.topLeftBut = "Duplicate";
-    this.oneBut = "Change Background";
-    this.twoBut = "Change Heading";
-    this.threBut = "Delete Last Instance";
-    this.btn = "Details";
+    this.carrot = 'Details';
   }
 
   render() {
     return html`
-      <main>
-        <button class="topLeftbtn">
-          ${this.topLeftBut}
-          <button class="oneBut">
-            ${this.oneBut}
-            <button class="twoBut">
-              ${this.twoBut}
-              <button class="threBut">
-              ${this.threBut}
-              </button>
-            </button>
-          </button>
-        </button>
-      </main>
+      <main></main>
       <div class="page">
         <div class="header"><h1>${this.title}</h1></div>
-        <meme-maker 
-          alt="Cat stalking a small toy" 
-          image-url="${this.Image}" 
-          top-text="This is not" 
-          bottom-text="transparent">
+        <meme-maker
+          alt="Cat stalking a small toy"
+          image-url="${this.Image}"
+          top-text="This is not"
+          bottom-text="transparent"
+        >
         </meme-maker>
-        <slot></slot>
-        <div class="paragraph"></div>
-        <button class="btn">
-        ${this.btn}
-        </button>
+
+        <details class="details">
+          <summary>${this.carrot}</summary>
+          <div>
+            <ul>
+              <slot><h3>Paragraph for description of the image</h3></slot>
+            </ul>
+          </div>
+        </details>
       </div>
     `;
   }

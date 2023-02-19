@@ -9,21 +9,126 @@
 
   <style>
     html,
+    .header {
+      font-family: Monospace;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .details {
+      font-family: Monospace;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      font-size: 20px;
+    }
+    @media only screen and (max-width: 500px) {
+      .page {
+        background: orange;
+        text-align: center;
+        box-shadow: 0px 6px 15px black;
+        padding: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media only screen and (min-width: 500px) {
+      .page {
+        background: orange;
+        text-align: center;
+        box-shadow: 0px 6px 15px black;
+        width: 500px;
+        padding: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
     body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
       background-color: #ededed;
     }
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      font-family: Monospace;
+      box-shadow: 0px 6px 15px black;
+      text-align: center;
+    }
+    .topLeftbtn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .oneBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .twoBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .threBut {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
   <title>orange-card</title>
 </head>
 
 <body>
+  <button class="topLeftbtn">Duplicate</button>
+  <button class="oneBut">Change Background</button>
+  <button class="twoBut">Change Heading</button>
+  <button class="threBut">Delete Last Instance</button>
+      
+    
+  
   <orange-card></orange-card>
-  <orange-card>Test</orange-card>
+  <orange-card>test</orange-card>
 
   <script type="module" src="./src/orange-card.js"></script>
+  <script>
+
+    document.querySelector('.topLeftbtn').addEventListener('click', () =>{
+      const card = document.querySelector('orange-card').shadowRoot.querySelector('.page');
+      const clone = card.cloneNode(true);
+      const child = document.body.appendChild(clone)
+      document.querySelector('.threBut').addEventListener('click', () =>{
+        document.body.removeChild(child);
+      });
+    });
+
+    document.querySelector('.oneBut').addEventListener('click', () =>{
+      const page = document.querySelector('orange-card').shadowRoot.querySelector('.page');
+      if (page.style.backgroundColor === "orange") {
+        page.style.backgroundColor = "red";
+      } else {
+        page.style.backgroundColor = "orange";
+      }
+    });
+
+    document.querySelector('.twoBut').addEventListener('click', () =>{
+      const head = document.querySelector('orange-card').shadowRoot.querySelector('.header');
+      if(head.innerHTML === "<h1>Heading for the title</h1>") {
+        head.innerHTML = "<h1>Something else</h1>";
+      } else {
+        head.innerHTML = "<h1>Heading for the title</h1>"
+      }
+      
+    });
+
+  </script>
 </body>
 
 </html>
