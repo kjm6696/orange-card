@@ -3,17 +3,24 @@ import '@lrnwebcomponents/meme-maker/src/meme-maker.js';
 
 class OrangeCard extends LitElement {
   static properties = {
-    header: { type: String },
-    Image: { type: String },
+    dropShadow: { type: Boolean, reflect: true, attribute: 'drop-shadow' },
+    // header: { type: String },
+    Image: { type: String, reflect: true },
     topLeftBut: { type: String },
     oneBut: { type: String },
     twoBut: { type: String },
     threBut: { type: String },
     btn: { type: String },
     carrot: { type: String },
+    memeTop: { type: String, reflect: true },
+    memeBottom: { type: String, reflect: true },
   };
 
   static styles = css`
+    :host([drop-shadow]) .page {
+      background-color: yellow;
+    }
+
     body {
       background: white;
     }
@@ -66,25 +73,25 @@ class OrangeCard extends LitElement {
     @media only screen and (max-width: 500px) {
       .page {
         background: orange;
-        text-align: center;
+        // text-align: center;
         box-shadow: 0px 6px 15px black;
         padding: 40px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
       }
     }
 
     @media only screen and (min-width: 500px) {
       .page {
         background: orange;
-        text-align: center;
+        // text-align: center;
         box-shadow: 0px 6px 15px black;
         width: 500px;
         padding: 40px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
       }
     }
 
@@ -106,11 +113,15 @@ class OrangeCard extends LitElement {
 
   constructor() {
     super();
-    this.title = 'Heading for the title';
+    this.title = 'Heading for title';
     this.Image =
       'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png';
     this.header = 'My app';
     this.carrot = 'Details';
+    this.accentColor = null;
+    this.dropShadow = false;
+    this.memeTop = 'This is not';
+    this.memeBottom = 'transparent';
   }
 
   render() {
@@ -121,8 +132,8 @@ class OrangeCard extends LitElement {
         <meme-maker
           alt="Cat stalking a small toy"
           image-url="${this.Image}"
-          top-text="This is not"
-          bottom-text="transparent"
+          top-text="${this.memeTop}"
+          bottom-text="${this.memeBottom}"
         >
         </meme-maker>
 
