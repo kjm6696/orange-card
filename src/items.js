@@ -24,7 +24,7 @@ export class Items extends LitElement {
   }
 
   updateItems() {
-    const address = new URL('../api/items.js', import.meta.url).href;
+    const address = new URL('../api/items', import.meta.url).href;
     fetch(address)
       .then(response => {
         if (response.ok) {
