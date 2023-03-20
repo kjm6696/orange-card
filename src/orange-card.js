@@ -1,3 +1,4 @@
+/* eslint-disable lit/no-native-attributes */
 import { LitElement, html, css } from 'lit';
 import '@lrnwebcomponents/meme-maker/src/meme-maker.js';
 
@@ -14,6 +15,7 @@ class OrangeCard extends LitElement {
     carrot: { type: String },
     memeTop: { type: String, reflect: true },
     memeBottom: { type: String, reflect: true },
+    title: { type: String, reflect: true },
   };
 
   static styles = css`
@@ -115,7 +117,7 @@ class OrangeCard extends LitElement {
     super();
     this.title = 'Heading for title';
     this.Image =
-      'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png';
+      'https://thumbs.dreamstime.com/b/transparent-designer-must-have-fake-background-39672616.jpg';
     this.header = 'My app';
     this.carrot = 'Details';
     this.accentColor = null;
